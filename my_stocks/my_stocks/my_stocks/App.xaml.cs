@@ -1,4 +1,5 @@
-﻿using System;
+﻿using my_stocks.view;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +12,13 @@ namespace my_stocks
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new ListStocks();
+        }
+
+        public static Page GetMainPage()
+        {
+            var companies = new ListStocks();
+            return new NavigationPage(companies);
         }
 
         protected override void OnStart()

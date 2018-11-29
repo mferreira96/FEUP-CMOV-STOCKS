@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="my_stocks.view.ListStocks"
+             Title="">
+  <ContentPage.Content>
+      
+      <ListView x:Name="companiesList" RowHeight="50">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*" />
+                                <ColumnDefinition Width="0.5*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="24" Margin="10"/>
+                            <Label Grid.Column="1" Text="{Binding Price}" HorizontalTextAlignment="End" Margin="15" FontSize="17"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+      </ListView>
+      
+  </ContentPage.Content>
+</ContentPage>
