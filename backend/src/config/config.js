@@ -12,7 +12,8 @@ module.exports = {
     }
   },
   stocks: {
-    alphaVantageKey: process.env.ALPHA_VANTAGE_KEY || '....'
+    alphaVantageKey: process.env.AV_KEY || 'NO KEY',
+    alphaVantageURL: 'https://www.alphavantage.co/query'
   },
   authentication: {
     jwtSecret: process.env.JWT_SECRET || 'secret',
