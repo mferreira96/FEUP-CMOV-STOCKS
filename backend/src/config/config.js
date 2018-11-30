@@ -11,6 +11,9 @@ module.exports = {
       operatorsAliases: false
     }
   },
+  stocks: {
+    alphaVantageKey: process.env.ALPHA_VANTAGE_KEY || '....'
+  },
   authentication: {
     jwtSecret: process.env.JWT_SECRET || 'secret',
     expiration: process.env.JWT_EXPIRE || 60 * 60 * 24 * 7,

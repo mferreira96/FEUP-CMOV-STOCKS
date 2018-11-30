@@ -23,6 +23,46 @@ namespace my_stocks.data
             {
                 Name = "Uber",
                 Price = 1.30,
+            },
+            new Company()
+            {
+                Name = "Uber",
+                Price = 1.30,
+            },
+            new Company()
+            {
+                Name = "Uber",
+                Price = 1.30,
+            },
+            new Company()
+            {
+                Name = "Uber",
+                Price = 1.30,
+            },
+            new Company()
+            {
+                Name = "Uber",
+                Price = 1.30,
+            },
+            new Company()
+            {
+                Name = "Uber",
+                Price = 1.30,
+            },
+            new Company()
+            {
+                Name = "Uber",
+                Price = 1.30,
+            },
+            new Company()
+            {
+                Name = "Uber",
+                Price = 1.30,
+            },
+            new Company()
+            {
+                Name = "Uber",
+                Price = 1.30,
             }
         };
     }
