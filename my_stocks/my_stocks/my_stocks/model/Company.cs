@@ -11,5 +11,7 @@ namespace my_stocks.model
         public Double Price { get; set;}
 
         public Double Selected;
+
+        public StockData[] History;
     }
 }
