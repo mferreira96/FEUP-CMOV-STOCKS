@@ -14,10 +14,7 @@ namespace my_stocks
 
         public MainPage()
         {
-            listStocks = new ListStocks
-            {
-                
-            };
+            InitializeComponent();
         }
     }
 }

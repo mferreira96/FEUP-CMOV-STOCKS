@@ -13,7 +13,7 @@ using Xamarin.Forms.Xaml;
 namespace my_stocks.view
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Chart: ContentPage
+	public partial class Chart: ContentView 
 	{
         Dictionary<string, SKColor> nameToColor = new Dictionary<string, SKColor>();
 
