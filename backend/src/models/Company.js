@@ -9,8 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     price: {
-      type: DataTypes.DOUBLE,
-      allowNull: false
+      type: DataTypes.DOUBLE
     }
   }, {
     freezeTableName: true

@@ -12,7 +12,7 @@ app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
 
-const reload = false
+const reload = true
 
 require('./routes')(app)
 
