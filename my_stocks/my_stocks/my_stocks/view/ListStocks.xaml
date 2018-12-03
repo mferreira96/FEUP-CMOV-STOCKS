@@ -14,8 +14,8 @@
                                 <ColumnDefinition Width="0.5*" />
                                 <ColumnDefinition Width="0.5*" />
                             </Grid.ColumnDefinitions>
-                            <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="24" Margin="10"/>
-                            <Label Grid.Column="1" Text="{Binding Price}" HorizontalTextAlignment="End" Margin="15" FontSize="17"/>
+                            <Label Text="{Binding name}" FontAttributes="Bold" FontSize="24" Margin="10"/>
+                            <Label Grid.Column="1" Text="{Binding lastPrice, StringFormat= '\{0\} USD'}" HorizontalTextAlignment="End" Margin="15" FontSize="17"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

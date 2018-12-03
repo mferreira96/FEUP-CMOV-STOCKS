@@ -11,58 +11,58 @@ namespace my_stocks.data
         {
             new Company()
             {
-                Name = "Facebook",
-                Price = 5.20,
+                name = "Facebook",
+                lastPrice = 5.20,
             },
             new Company()
             {
-                Name = "Google",
-                Price = 25.20,
+                name = "Google",
+                lastPrice = 25.20,
             },
             new Company()
             {
-                Name = "Uber",
-                Price = 1.30,
+                name = "Uber",
+                lastPrice = 1.30,
             },
             new Company()
             {
-                Name = "Uber",
-                Price = 1.30,
+                name = "Uber",
+                lastPrice = 1.30,
             },
             new Company()
             {
-                Name = "Uber",
-                Price = 1.30,
+                name = "Uber",
+                lastPrice = 1.30,
             },
             new Company()
             {
-                Name = "Uber",
-                Price = 1.30,
+                name = "Uber",
+                lastPrice = 1.30,
             },
             new Company()
             {
-                Name = "Uber",
-                Price = 1.30,
+                name = "Uber",
+                lastPrice = 1.30,
             },
             new Company()
             {
-                Name = "Uber",
-                Price = 1.30,
+                name = "Uber",
+                lastPrice = 1.30,
             },
             new Company()
             {
-                Name = "Uber",
-                Price = 1.30,
+                name = "Uber",
+                lastPrice = 1.30,
             },
             new Company()
             {
-                Name = "Uber",
-                Price = 1.30,
+                name = "Uber",
+                lastPrice = 1.30,
             },
             new Company()
             {
-                Name = "Uber",
-                Price = 1.30,
+                name = "Uber",
+                lastPrice = 1.30,
             }
         };
     }

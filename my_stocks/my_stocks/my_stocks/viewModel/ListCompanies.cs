@@ -1,9 +1,11 @@
 ﻿using my_stocks.data;
 using my_stocks.model;
+using my_stocks.services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace my_stocks.viewModel
 {
@@ -22,12 +24,24 @@ namespace my_stocks.viewModel
 
         public ListCompanies()
         {
-            companies = new ObservableCollection<Company>();
-            Test _context = new Test();
+            this.companies = new ObservableCollection<Company>();
+            this.BuildList();    
+        }
 
-            foreach ( var company in _context.Companies)
+        private async void BuildList()
+        {
+            WebInterface webInterface = WebInterface.getInstance();
+            CompaniesList companiesRetrieved = await webInterface.Get<CompaniesList>("/companies");
+
+            if (companiesRetrieved != null)
             {
-                Companies.Add(company);
+                this.companies.Clear();
+
+                foreach (var company in companiesRetrieved.companies)
+                {
+                    Console.WriteLine("company = " + company);
+                    this.companies.Add(company);
+                }
             }
         }
     }

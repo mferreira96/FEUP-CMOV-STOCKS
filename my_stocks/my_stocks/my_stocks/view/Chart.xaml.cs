@@ -210,7 +210,7 @@ namespace my_stocks.view
                 SKPath path = GetPath(points);
                 SKPath poly = GetPolygon(points, chartRect);
 
-                SKColor color = nameToColor[company.Name];
+                SKColor color = nameToColor[company.name];
                 SKColor color2 = new SKColor(color.Red, color.Green, color.Blue, 100);
 
                 canvas.DrawPath(poly, new SKPaint { Style = SKPaintStyle.Fill, Color = color2 });
@@ -238,7 +238,7 @@ namespace my_stocks.view
             {
                 new Company
                 {
-                    Name="first",
+                    name="first",
                     History = new StockData[]
                     {
                         new StockData(100, "1999-12-12"),
@@ -251,7 +251,7 @@ namespace my_stocks.view
                 },
                 new Company
                 {
-                    Name="second",
+                    name="second",
                     History = new StockData[]
                     {
                         new StockData(300, "1999-12-12"),

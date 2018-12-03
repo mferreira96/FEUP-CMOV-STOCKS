@@ -49,7 +49,7 @@ module.exports = {
           }
         }
 
-        res.status(200).send({msg: 'success', data: companies})
+        res.status(200).send({companies})
       }).catch(function (resp) {
         res.status(400).send({msg: 'error', data: resp})
         throw new Error(resp.statusText || resp.status || 'Bad request')

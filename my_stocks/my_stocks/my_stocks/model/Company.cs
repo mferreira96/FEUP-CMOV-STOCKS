@@ -6,12 +6,25 @@ namespace my_stocks.model
 {
     public class Company
     {
-        public String Name { get; set;}
+        public String name { get; set;}
      
-        public Double Price { get; set;}
+        public Double lastPrice { get; set;}
+
+        public String symbol { get; set;}
 
         public Double Selected;
 
-        public StockData[] History;
+        public StockData[] History; 
+
+        public Company(String name, Double lastPrice, String symbol)
+        {
+            this.name = name;
+            this.lastPrice = lastPrice;
+            this.symbol = symbol;
+        }
+
+        public Company()
+        {
+        }
     }
 }
