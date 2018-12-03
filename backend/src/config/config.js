@@ -13,7 +13,9 @@ module.exports = {
   },
   stocks: {
     alphaVantageKey: process.env.AV_KEY || 'NO KEY',
-    alphaVantageURL: 'https://www.alphavantage.co/query'
+    alphaVantageURL: 'https://www.alphavantage.co/query',
+    barchartKey: process.env.BC_KEY || 'NO KEY',
+    barchartURL: 'https://marketdata.websol.barchart.com'
   },
   authentication: {
     jwtSecret: process.env.JWT_SECRET || 'secret',

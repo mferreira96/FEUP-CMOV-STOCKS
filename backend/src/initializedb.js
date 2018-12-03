@@ -16,66 +16,66 @@ module.exports = async (initialize) => {
 
   await Company.create({
     name: 'Facebook',
-    tick: 'FB'
+    symbol: 'FB'
   })
 
   await Company.create({
     name: 'Apple',
-    tick: 'AAPL'
+    symbol: 'AAPL'
   })
 
   await Company.create({
     name: 'IBM',
-    tick: 'IBM'
+    symbol: 'IBM'
   })
 
   await Company.create({
     name: 'Microsoft',
-    tick: 'MSFT'
+    symbol: 'MSFT'
   })
 
   await Company.create({
     name: 'Oracle',
-    tick: 'ORCL'
+    symbol: 'ORCL'
   })
 
   await Company.create({
     name: 'Google',
-    tick: 'GOOG'
+    symbol: 'GOOG'
   })
 
   await Company.create({
     name: 'Twitter',
-    tick: 'TWTR'
+    symbol: 'TWTR'
   })
 
   await Company.create({
     name: 'Intel',
-    tick: 'INTC'
+    symbol: 'INTC'
   })
 
   await Company.create({
     name: 'AMD',
-    tick: 'AMD'
+    symbol: 'AMD'
   })
 
   await Company.create({
     name: 'Hewlett Packard',
-    tick: 'HPE'
+    symbol: 'HPE'
   })
 
   await Company.create({
     name: 'Amazon',
-    tick: 'AMZN'
+    symbol: 'AMZN'
   })
 
   await Company.create({
     name: 'Tesla',
-    tick: 'TSLA'
+    symbol: 'TSLA'
   })
 
   await Company.create({
     name: 'Netflix',
-    tick: 'NFLX'
+    symbol: 'NFLX'
   })
 }

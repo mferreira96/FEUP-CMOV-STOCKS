@@ -4,11 +4,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    tick: {
+    symbol: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    price: {
+    lastPrice: {
       type: DataTypes.DOUBLE
     }
   }, {

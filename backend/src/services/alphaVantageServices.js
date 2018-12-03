@@ -3,7 +3,7 @@ const config = require('../config/config')
 
 module.exports = {
   retrieveCompany (companySymbol) {
-    return api().get('', {
+    return api.getAlphaAdvantageApi().get('', {
       params: {
         function: 'TIME_SERIES_WEEKLY',
         symbol: companySymbol,
