@@ -16,15 +16,20 @@ namespace my_stocks.view
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ListStocks : ContentPage
 	{       
+
         public ListStocks()
 		{
 
             InitializeComponent();
             Title = "Companies";
             ListCompanies listCompanies = new ListCompanies();
-
-            companiesList.ItemsSource = listCompanies.Companies;
             
+            companiesList.ItemsSource = listCompanies.Companies;
+            companiesList.RefreshCommand = new Command(() =>
+            {
+                listCompanies.BuildList();
+                companiesList.IsRefreshing = false;
+            });
 		}
 	}
 }

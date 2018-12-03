@@ -28,7 +28,7 @@ namespace my_stocks.viewModel
             this.BuildList();    
         }
 
-        private async void BuildList()
+        public async void BuildList()
         {
             WebInterface webInterface = WebInterface.getInstance();
             CompaniesList companiesRetrieved = await webInterface.Get<CompaniesList>("/companies");

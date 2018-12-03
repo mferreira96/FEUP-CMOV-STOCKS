@@ -12,7 +12,7 @@ namespace my_stocks.model
 
         public String symbol { get; set;}
 
-        public Double Selected;
+        public Boolean Selected { get; set; }
 
         public StockData[] History; 
 
@@ -21,10 +21,12 @@ namespace my_stocks.model
             this.name = name;
             this.lastPrice = lastPrice;
             this.symbol = symbol;
+            this.Selected = false;
         }
 
         public Company()
         {
+            this.Selected = false;
         }
     }
 }
