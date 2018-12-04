@@ -18,8 +18,8 @@ namespace my_stocks.view
             Title = "Companies";
             ListCompanies listCompanies = new ListCompanies();
 
-            companiesList.ItemTemplate = new DataTemplate(typeof(CompanyCellTemplate));
             companiesList.ItemsSource = listCompanies.Companies;
+            companiesList.ItemTemplate = new DataTemplate(typeof(CompanyCellTemplate));
             companiesList.RefreshCommand = new Command(() =>
             {
                 listCompanies.BuildList();

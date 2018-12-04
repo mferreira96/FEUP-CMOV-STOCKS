@@ -1,7 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:my_stocks.view"
              x:Class="my_stocks.view.CompanyCell">
+    
+    <ContentView.Resources>
+        <!-- Add this line below -->
+        <local:ValueToColorConverter x:Key="ValueToColorConverter" />
+    </ContentView.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.5*"/>
@@ -10,8 +17,8 @@
         </Grid.ColumnDefinitions>
         <Label Text="{Binding name}" FontAttributes="Bold" FontSize="18" Margin="10"/>
         <StackLayout Grid.Column="1" Orientation="Vertical" VerticalOptions="Center">
-            <Label Text="{Binding percentChange, StringFormat='{}{0:F2}%'}" FontSize="15"/>
-            <Label Text="{Binding netChange, StringFormat='{}{0:F2}'}" FontSize="15"/>
+            <Label x:Name="percentChange" TextColor="{Binding netChange, Converter={StaticResource ValueToColorConverter}}" Text="{Binding percentChange, StringFormat='{}{0:F2}%'}" FontSize="15"/>
+            <Label x:Name="netChange" TextColor="{Binding netChange, Converter={StaticResource ValueToColorConverter}}" Text="{Binding netChange, StringFormat='{}{0:F2}'}" FontSize="15"/>
         </StackLayout>
         <Label Grid.Column="2" Text="{Binding lastPrice, StringFormat= '\{0\} USD'}" HorizontalTextAlignment="End" Margin="15" FontSize="17"/>
     </Grid>
