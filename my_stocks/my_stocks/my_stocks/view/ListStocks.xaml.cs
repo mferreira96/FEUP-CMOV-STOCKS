@@ -17,7 +17,8 @@ namespace my_stocks.view
             InitializeComponent();
             Title = "Companies";
             ListCompanies listCompanies = new ListCompanies();
-            
+
+            companiesList.ItemTemplate = new DataTemplate(typeof(CompanyCellTemplate));
             companiesList.ItemsSource = listCompanies.Companies;
             companiesList.RefreshCommand = new Command(() =>
             {
