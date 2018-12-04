@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace my_stocks.model
 {
@@ -12,16 +11,22 @@ namespace my_stocks.model
 
         public String symbol { get; set;}
 
+        public Double netChange { get; set; }
+
+        public Double percentChange { get; set; }
+
         public Boolean Selected { get; set; }
 
         public StockData[] History; 
 
-        public Company(String name, Double lastPrice, String symbol)
+        public Company(String name, Double lastPrice, String symbol, Double netChange, Double percentChange)
         {
             this.name = name;
             this.lastPrice = lastPrice;
             this.symbol = symbol;
             this.Selected = false;
+            this.netChange = netChange;
+            this.percentChange = percentChange;
         }
 
         public Company()

@@ -25,7 +25,10 @@ module.exports = {
       var result = await Company.findAll()
 
       var companyTicks = []
+      var dbCompanies = []
+
       for (var i = 0; i < result.length; i++) {
+        dbCompanies.push(result[i].dataValues)
         companyTicks.push(result[i].dataValues.symbol)
       }
 
@@ -35,13 +38,15 @@ module.exports = {
         var companies = []
 
         if (resp.data.status.code !== 200) {
-          companies = result
+          companies = dbCompanies
         } else {
           companies = resp.data.results
 
           for (var i = 0; i < companies.length; i++) {
             Company.update({
-              lastPrice: companies[i].lastPrice
+              lastPrice: companies[i].lastPrice,
+              netChange: companies[i].netChange,
+              percentChange: companies[i].percentChange
             },
             {
               where: { symbol: companies[i].symbol }

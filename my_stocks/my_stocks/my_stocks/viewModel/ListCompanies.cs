@@ -1,11 +1,7 @@
-﻿using my_stocks.data;
-using my_stocks.model;
+﻿using my_stocks.model;
 using my_stocks.services;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace my_stocks.viewModel
 {
@@ -33,6 +29,7 @@ namespace my_stocks.viewModel
             WebInterface webInterface = WebInterface.getInstance();
             CompaniesList companiesRetrieved = await webInterface.Get<CompaniesList>("/companies");
 
+                       
             if (companiesRetrieved != null)
             {
                 this.companies.Clear();

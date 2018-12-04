@@ -10,6 +10,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     lastPrice: {
       type: DataTypes.DOUBLE
+    },
+    netChange: {
+      type: DataTypes.DOUBLE
+    },
+    percentChange: {
+      type: DataTypes.DOUBLE
     }
   }, {
     freezeTableName: true

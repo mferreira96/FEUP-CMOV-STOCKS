@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace my_stocks.services
@@ -34,7 +32,7 @@ namespace my_stocks.services
 
                 response.EnsureSuccessStatusCode();
                 var respString =  await response.Content.ReadAsStringAsync();
-                
+
                 return JsonConvert.DeserializeObject<T>(respString);
             }
             catch (Exception e)
