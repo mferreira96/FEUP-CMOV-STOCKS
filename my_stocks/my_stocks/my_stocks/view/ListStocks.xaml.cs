@@ -44,7 +44,7 @@ namespace my_stocks.view
 
             if (btn.ClassId.Equals(compareButton.ClassId))
             {
-                Navigation.PushAsync(new ChartPage());
+                await Navigation.PushAsync(new ChartPage(selectedCompanies));
             }
             else if (btn.ClassId.Equals(cancelButton.ClassId))
             {

@@ -15,7 +15,7 @@ namespace my_stocks.view
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Chart: ContentView 
 	{
-        Dictionary<string, SKColor> nameToColor = new Dictionary<string, SKColor>();
+        SKColor[] colors;
 
         SKPaint fillPaint = new SKPaint
         {
@@ -31,13 +31,29 @@ namespace my_stocks.view
 
         private int STROKE_SIZE = 4;
 
-        private List<Company> companies;
+        private Company[] companies;
+
+        public Company[] Companies
+        {
+            get
+            {
+                return companies;
+            }
+            set
+            {
+                companies = value;
+                canvasView.InvalidateSurface();
+            }
+        }
 
         public Chart ()
 		{
 			InitializeComponent ();
-            nameToColor.Add("first", SKColors.Red);
-            nameToColor.Add("second", SKColors.Blue);
+            colors = new SKColor[]{
+                SKColors.Blue,
+                SKColors.Red,
+                SKColors.Green
+            };
             canvasView.EnableTouchEvents = true;
             canvasView.Touch += OnTouch;
             lastTouch = float.MaxValue;
@@ -111,8 +127,8 @@ namespace my_stocks.view
 
         private SKPath GetPolygon(List<SKPoint> points, SKRect rect)
         {
-            SKPoint p1 = new SKPoint(rect.Left + rect.Width, rect.Top + rect.Height);
-            SKPoint p2 = new SKPoint(rect.Left, rect.Top + rect.Height);
+            SKPoint p1 = new SKPoint(rect.Left, rect.Bottom);
+            SKPoint p2 = new SKPoint(rect.Right, rect.Bottom);
             points.Add(p1);
             points.Add(p2);
             SKPath path = new SKPath();
@@ -297,9 +313,9 @@ namespace my_stocks.view
                 SKPath path = GetPath(points);
                 SKPath poly = GetPolygon(points, chartRect);
 
-                SKColor color = nameToColor[company.name];
+                SKColor color = colors[i%colors.Length];
                 SKColor color2 = new SKColor(color.Red, color.Green, color.Blue, 100);
-                SKColor color3 = new SKColor(color.Red, color.Green, color.Blue, 10);
+                SKColor color3 = new SKColor(color.Red, color.Green, color.Blue, 0);
 
                 SKPaint gradient =
                     new SKPaint
@@ -363,7 +379,14 @@ namespace my_stocks.view
                 }
             };
         }
-        
+
+        private float Normalize(DateTime value, DateTime min, DateTime max)
+        {
+            TimeSpan v = value - min;
+            TimeSpan v2 = max - min;
+            return (float)(v.TotalSeconds / v2.TotalSeconds);
+        }       
+
         private float Normalize(float value, float min, float max)
         {
             float v = value - min;
@@ -396,6 +419,8 @@ namespace my_stocks.view
 
             int yOffset = 20;
             int xOffset = 20;
+            if (Companies == null || Companies.Length == 0)
+                return;
 
             SKRect chartRect = new SKRect(xOffset, yOffset, width - labelYWidth -xOffset, height - labelXHeight -yOffset);
             SKRect chartYLabel = new SKRect(width - labelYWidth - xOffset, yOffset, width -xOffset, height - labelXHeight - yOffset);
@@ -408,11 +433,20 @@ namespace my_stocks.view
 
             SKPaint line = new SKPaint { Color = SKColors.Black, StrokeWidth = 2, Style = SKPaintStyle.StrokeAndFill};
 
-            int numberOfElements = GetDummies()[0].History.Length - 1;
+            int numberOfElements = Companies.Length == 0? 0 : Companies[0].History.Length - 1;
             float offset = (chartRect.Width / numberOfElements) / 2f;
-            lastSnap = (int)(numberOfElements * Normalize(lastTouch + offset, chartRect.Left, chartRect.Right));
+            lastSnap = (int)(numberOfElements * (1f - To01(chartRect.Left, chartRect.Right, lastTouch-offset)));
 
-            float barPos = chartRect.Left + chartRect.Width*(lastSnap / (float)numberOfElements);
+            StockData[] history = Companies[0].History;
+            DateTime startDate = history[0].Date;
+            DateTime endDate = history[history.Length-1].Date;
+            DateTime selected = history[lastSnap].Date;
+
+
+
+
+
+            float barPos = chartRect.Left + chartRect.Width*(To01(endDate, startDate, selected));
             float dist = Math.Abs(lastValue - barPos);
             lastValue = Lerp(lastValue, barPos, 0.2f);
             if (dist < 2)
@@ -443,7 +477,7 @@ namespace my_stocks.view
             //canvas.DrawRect(chartXLabel, new SKPaint{ Style = SKPaintStyle.Fill, Color = SKColors.Green });
             //canvas.DrawRect(chartYLabel, new SKPaint{ Style = SKPaintStyle.Fill, Color = SKColors.Blue });
 
-            DrawData(canvas, GetDummies(), chartRect, chartXLabel, chartYLabel); 
+            DrawData(canvas, Companies, chartRect, chartXLabel, chartYLabel); 
             
         }
 	}

@@ -2,12 +2,13 @@ const api = require('./api')
 const config = require('../config/config')
 
 module.exports = {
-  retrieveCompany (companySymbol) {
+  retrieveCompanyData (companySymbol, byWeek) {
     return api.getAlphaAdvantageApi().get('', {
       params: {
-        function: 'TIME_SERIES_WEEKLY',
+        function: byWeek ? 'TIME_SERIES_WEEKLY' : 'TIME_SERIES_MONTHLY',
         symbol: companySymbol,
-        apikey: config.stocks.alphaVantageKey
+        apikey: config.stocks.alphaVantageKey,
+        outputsize: 'compact'
       }
     })
   }

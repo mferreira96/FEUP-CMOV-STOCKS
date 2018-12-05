@@ -24,7 +24,7 @@ require('./routes')(app)
 
 sequelize.sync({force: reload})
   .then(async () => {
-    await initializedb(reload)
+    await initializedb(true)
   })
   .then(() => {
     app.listen(process.env.PORT || config.port)

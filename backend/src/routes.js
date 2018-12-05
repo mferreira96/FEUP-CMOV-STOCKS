@@ -5,7 +5,7 @@ module.exports = (app) => {
   // *****************
   // * Costumers
   // *****************
-  app.get('/stock',
+  app.get('/stocks/:type/:companies',
     stocksController.retrieveData)
 
   app.get('/companies',

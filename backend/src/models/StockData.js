@@ -12,5 +12,11 @@ module.exports = (sequelize, DataTypes) => {
     freezeTableName: true
   })
 
+  stockData.associate = (models) => {
+    stockData.belongsTo(models.Company, {
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE'
+    })
+  }
   return stockData
 }
