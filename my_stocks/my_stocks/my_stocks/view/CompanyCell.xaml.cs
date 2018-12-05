@@ -18,7 +18,12 @@ namespace my_stocks.view
         {
             InitializeComponent();
         }
-	}
+
+        private void Icon_SizeChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 
     public class CompanyCellTemplate : ViewCell
     {
@@ -44,7 +49,31 @@ namespace my_stocks.view
                 return Color.Red;
             }
 
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
     }
+
+    public class ValueToImageConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            Double netChangeValue = (Double)value;
+            String source;
+            if (netChangeValue >= 0)
+            {
+                source =  "my_stocks.resources.arrow_up.png";
+            }
+            else
+            {
+                source = "my_stocks.resources.arrow_down.png";
+            }
+
+            return ImageSource.FromResource(source);
+        }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {

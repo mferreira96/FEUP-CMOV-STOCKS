@@ -11,6 +11,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="resources\arrow_down.jpg" />
+    <None Remove="resources\arrow_down.png" />
+    <None Remove="resources\arrow_down.svg" />
+    <None Remove="resources\arrow_up.jpg" />
+    <None Remove="resources\arrow_up.png" />
+    <None Remove="resources\arrow_up.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="resources\arrow_down.png" />
+    <EmbeddedResource Include="resources\arrow_up.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="SkiaSharp" Version="1.60.3" />
     <PackageReference Include="SkiaSharp.Views.Forms" Version="1.60.3" />
