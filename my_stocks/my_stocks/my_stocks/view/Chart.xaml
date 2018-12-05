@@ -2,6 +2,7 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             xmlns:tt="clr-namespace:Effect"
              x:Class="my_stocks.view.Chart">
     <StackLayout>
         <skia:SKCanvasView x:Name="canvasView" PaintSurface="canvasView_PaintSurface" HorizontalOptions="Fill" VerticalOptions="FillAndExpand"/>
