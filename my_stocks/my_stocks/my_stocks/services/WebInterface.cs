@@ -21,7 +21,7 @@ namespace my_stocks.services
         private WebInterface()
         {
             _client = new HttpClient();
-            _client.BaseAddress = new Uri("http://localhost:8080");
+            _client.BaseAddress = new Uri("http://192.168.1.117:8080");
         } 
 
         public async Task<T> Get<T>(string path)

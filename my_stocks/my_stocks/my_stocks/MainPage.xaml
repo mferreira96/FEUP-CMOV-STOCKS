@@ -1,17 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage x:Name="page"
+             xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:my_stocks"
+             xmlns:converters="clr-namespace:my_stocks.converters"
              xmlns:chart="clr-namespace:my_stocks.view"
              x:Class="my_stocks.MainPage">
-
-    <StackLayout>
+    <StackLayout Spacing="0" Orientation="Vertical">
         <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="Center" />
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Label Text="My Stocks" 
+               HorizontalOptions="Center" FontSize="40"
+               VerticalOptions="Center" TextColor="CornflowerBlue"/>
 
-        <chart:Chart HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            <Image x:Name="icon" Aspect="AspectFit" Scale="1.0" HeightRequest="200" VerticalOptions="Center"  />
+            <Button x:Name="start" Text="Start" FontSize="30" VerticalOptions="Center" BackgroundColor="White" TextColor="CornflowerBlue" Padding="20"  />
+        </StackLayout>
     </StackLayout>
 
 </ContentPage>

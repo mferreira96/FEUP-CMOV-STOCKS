@@ -13,23 +13,20 @@ using Xamarin.Forms.Xaml;
 namespace my_stocks.view
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class CompanyCell : ContentView
+	public partial class CompanyCellChart : ContentView
 	{
-        public CompanyCell()
+        public CompanyCellChart()
         {
             InitializeComponent();
         }
 
     }
 
-    public class CompanyCellTemplate : ViewCell
+    public class CompanyCellChartTemplate : ViewCell
     {
-        public CompanyCellTemplate ()
+        public CompanyCellChartTemplate ()
         {
-            View = new CompanyCell();
-            
+            View = new CompanyCellChart();
         }
     }
-
-
 }

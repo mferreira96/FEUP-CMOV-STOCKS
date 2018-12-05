@@ -44,18 +44,10 @@ namespace my_stocks.viewModel
 
             } catch(Exception e)
             {
-
+                
                 companiesRetrieved = new CompaniesList
                 {
                     companies = new Company[]{
-                    new Company("TEST", 20, "123", 0.3, 22.22),
-                    new Company("TEST", 20, "123", 0.3, 22.22),
-                    new Company("TEST", 20, "123", 0.3, 22.22),
-                    new Company("TEST", 20, "123", 0.3, 22.22),
-                    new Company("TEST", 20, "123", 0.3, 22.22),
-                    new Company("TEST", 20, "123", 0.3, 22.22),
-                    new Company("TEST", 20, "123", 0.3, 22.22),
-                    new Company("TEST", 20, "123", 0.3, 22.22),
                     new Company("TEST", 20, "123", 0.3, 22.22),
                     new Company("TEST", 20, "123", 0.3, 22.22)
                     }

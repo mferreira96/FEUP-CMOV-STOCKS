@@ -17,11 +17,13 @@
     <None Remove="resources\arrow_up.jpg" />
     <None Remove="resources\arrow_up.png" />
     <None Remove="resources\arrow_up.svg" />
+    <None Remove="resources\logo.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="resources\arrow_down.png" />
     <EmbeddedResource Include="resources\arrow_up.png" />
+    <EmbeddedResource Include="resources\logo.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +34,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="view\CompanyCellChart.xaml.cs">
+      <DependentUpon>CompanyCellChart.xaml</DependentUpon>
+    </Compile>
     <Compile Update="view\ListStocks.xaml.cs">
       <DependentUpon>ListStocks.xaml</DependentUpon>
     </Compile>

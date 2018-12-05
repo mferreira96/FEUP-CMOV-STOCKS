@@ -11,12 +11,30 @@ namespace my_stocks.view
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ListStocks : ContentPage
 	{
+
+        private bool loading = true;
+        public bool Loading
+        {
+            get
+            {
+                return loading;
+            }
+            set
+            {
+                if (loading != value)
+                    loading = value;
+                OnPropertyChanged();
+            }
+        }
+        
         private List<Company> selectedCompanies;
         private ListCompanies listCompanies;
+        private bool byWeek = true;
 
         public ListStocks()
 		{
 
+            Loading = true;
             InitializeComponent();
             Title = "Companies";
             listCompanies = new ListCompanies();
@@ -28,12 +46,18 @@ namespace my_stocks.view
                 listCompanies.BuildList();
                 companiesList.IsRefreshing = false;
             });
+            Loading = false;
             companiesList.SelectionMode = ListViewSelectionMode.Single;
             companiesList.ItemTapped += OnTapEvent;
 
             compareButton.Clicked += OnButtonClick;
             cancelButton.Clicked += OnButtonClick;
-            viewStats.Clicked += OnButtonClick;
+
+            sortByButton.Clicked += (a, b) =>
+            {
+                byWeek = !byWeek;
+                sortByButton.Text = byWeek ? "By Week" : "By Month";
+            };
 
             selectedCompanies = new List<Company>();
         }
@@ -44,7 +68,7 @@ namespace my_stocks.view
 
             if (btn.ClassId.Equals(compareButton.ClassId))
             {
-                await Navigation.PushAsync(new ChartPage(selectedCompanies));
+                await Navigation.PushAsync(new ChartPage(selectedCompanies, byWeek));
             }
             else if (btn.ClassId.Equals(cancelButton.ClassId))
             {
@@ -54,10 +78,6 @@ namespace my_stocks.view
                 }
                 selectedCompanies.Clear();
                 ButtonsVisibility(0);
-            }
-            else if (btn.ClassId.Equals(viewStats.ClassId))
-            {
-                //navigate
             }
         }
 
@@ -73,7 +93,7 @@ namespace my_stocks.view
                 selectedItem.Selected = false;
                 selectedCompanies.Remove(selectedItem);
             }
-            else
+            else if(selectedCompanies.Count < 4)
             {
                 selectedItem.Selected = true;
                 selectedCompanies.Add(selectedItem);
@@ -92,18 +112,20 @@ namespace my_stocks.view
             {
                 Console.WriteLine("more than one selected");
                 multiple.IsVisible = true;
-                single.IsVisible = false;
+                compareButton.Text = "Compare";
+                cancelButton.IsVisible = true;
             }
             else if (totalSelected == 1)
             {
                 Console.WriteLine("one selected");
-                multiple.IsVisible = false;
-                single.IsVisible = true;
+                multiple.IsVisible = true;
+                compareButton.Text = "Analyse";
+                cancelButton.IsVisible = false;
             }
             else
             {
                 multiple.IsVisible = false;
-                single.IsVisible = false;
+                cancelButton.IsVisible = false;
                 Console.WriteLine("none");
             }
         }

@@ -2,12 +2,14 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:my_stocks.view"
+             xmlns:converters="clr-namespace:my_stocks.converters"
              x:Class="my_stocks.view.CompanyCell">
 
     <ContentView.Resources>
-        <local:ValueToColorConverter x:Key="ValueToColorConverter" />
-        <local:ValueToImageConverter x:Key="ValueToImageConverter" />
-        <local:BooleanToColorConverter x:Key="BooleanToColorConverter" />
+        <converters:ValueToColorConverter x:Key="ValueToColorConverter" />
+        <converters:ValueToImageConverter x:Key="ValueToImageConverter" />
+        <converters:BooleanToColorConverter x:Key="BooleanToColorConverter" />
+        <converters:IntegerToColorConverter x:Key="IntegerToColorConverter" />
     </ContentView.Resources>
 
     <StackLayout BackgroundColor="{Binding Selected , Converter={StaticResource BooleanToColorConverter}}">
@@ -24,7 +26,7 @@
                 <Label x:Name="percentChange" TextColor="{Binding netChange, Converter={StaticResource ValueToColorConverter}}" Text="{Binding percentChange, StringFormat='{}{0:F2}%'}" FontSize="15"/>
                 <Label x:Name="netChange" TextColor="{Binding netChange, Converter={StaticResource ValueToColorConverter}}" Text="{Binding netChange, StringFormat='{}{0:F2}'}" FontSize="15"/>
             </StackLayout>
-            <Image x:Name="icon" Grid.Column="2" Source="{Binding netChange, Converter={StaticResource ValueToImageConverter}}" Aspect="AspectFit"  />
+            <Image x:Name="icon" Grid.Column="2" Source="{Binding netChange, Converter={StaticResource ValueToImageConverter}}" Aspect="AspectFit" Scale="0.2"  />
             <Label Grid.Column="3" Text="{Binding lastPrice, StringFormat= '\{0\} USD'}" HorizontalTextAlignment="End" Margin="15" FontSize="17"/>
         </Grid>
     </StackLayout>

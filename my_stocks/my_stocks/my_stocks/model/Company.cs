@@ -8,12 +8,28 @@ namespace my_stocks.model
     public class Company : INotifyPropertyChanged
     {
         public String name { get; set;}
+        
+        public double LastPrice {
+            get { return lastPrice; }
+            set
+            {
+                if(lastPrice != value)
+                {
+                    lastPrice = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
      
         public Double lastPrice { get; set;}
 
         public String symbol { get; set;}
 
         public Double netChange { get; set; }
+
+        private int index;
+
+        public int Index { get; set; }
 
         public Double percentChange { get; set; }
 

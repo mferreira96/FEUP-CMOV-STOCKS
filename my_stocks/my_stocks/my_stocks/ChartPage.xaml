@@ -1,11 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage x:Name="page"
+             xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:chart="clr-namespace:my_stocks.view"
+             xmlns:local="clr-namespace:my_stocks"
              x:Class="my_stocks.ChartPage">
     <ContentPage.Content>
-        <StackLayout>
-            <chart:Chart x:Name="chartView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+        <StackLayout VerticalOptions="Center">
+            <ActivityIndicator IsRunning="True" VerticalOptions="CenterAndExpand" IsVisible="{Binding Source={x:Reference page}, Path=Loading}" Color="CornflowerBlue"></ActivityIndicator>
+            <Grid VerticalOptions="End">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="2*" />
+                </Grid.RowDefinitions>
+                <ListView Grid.Row="0" x:Name="companiesList" HasUnevenRows="True" RowHeight="40">
+                </ListView>
+        
+                <chart:Chart Grid.Row="1" x:Name="chartView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

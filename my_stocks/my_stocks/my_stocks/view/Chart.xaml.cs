@@ -24,7 +24,7 @@ namespace my_stocks.view
         };
 
         private float lastTouch = 0;
-        private int lastSnap = 0;
+        private int lastSnap = -1;
         private float lastValue = 0;
         private bool canMove = false;
         private bool animating = false;
@@ -50,15 +50,25 @@ namespace my_stocks.view
 		{
 			InitializeComponent ();
             colors = new SKColor[]{
-                SKColors.Blue,
-                SKColors.Red,
-                SKColors.Green
+                FromHex("#0D47A1"),
+                FromHex("#B71C1C"),
+                FromHex("#1B5E20"),
+                FromHex("#BF360C"),
+                FromHex("#880E4F")
             };
+
             canvasView.EnableTouchEvents = true;
             canvasView.Touch += OnTouch;
             lastTouch = float.MaxValue;
             AnimateBar();
 		}
+
+        private SKColor FromHex(String hex)
+        {
+            SKColor color;
+            SKColor.TryParse(hex, out color);
+            return color;
+        }
 
         private void OnTouch(object sender, SKTouchEventArgs touch){
 
@@ -88,6 +98,11 @@ namespace my_stocks.view
         }
 
         private float Clamp(float value, float min, float max)
+        {
+            return value < min ? min : (value > max ? max : value);
+        }
+
+        private int Clamp(int value, int min, int max)
         {
             return value < min ? min : (value > max ? max : value);
         }
@@ -435,9 +450,23 @@ namespace my_stocks.view
 
             int numberOfElements = Companies.Length == 0? 0 : Companies[0].History.Length - 1;
             float offset = (chartRect.Width / numberOfElements) / 2f;
-            lastSnap = (int)(numberOfElements * (1f - To01(chartRect.Left, chartRect.Right, lastTouch-offset)));
+            int newSnap = (int)(numberOfElements * (1f - To01(chartRect.Left, chartRect.Right, lastTouch-offset)));
+
+            newSnap = Clamp(newSnap, 0, numberOfElements);
+
+            if(newSnap != lastSnap)
+            {
+                foreach (Company c in Companies)
+                {
+                    if (c.History.Length <= newSnap) continue;
+                    c.LastPrice = c.History[newSnap].Value;
+                }
+            }
+
+            lastSnap = newSnap;
 
             StockData[] history = Companies[0].History;
+            if (history.Length == 0) return;
             DateTime startDate = history[0].Date;
             DateTime endDate = history[history.Length-1].Date;
             DateTime selected = history[lastSnap].Date;
