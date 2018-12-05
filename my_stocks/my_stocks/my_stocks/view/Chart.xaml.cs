@@ -31,6 +31,8 @@ namespace my_stocks.view
 
         private int STROKE_SIZE = 4;
 
+        private List<Company> companies;
+
         public Chart ()
 		{
 			InitializeComponent ();

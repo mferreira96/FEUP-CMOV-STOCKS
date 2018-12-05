@@ -19,10 +19,6 @@ namespace my_stocks.view
             InitializeComponent();
         }
 
-        private void Icon_SizeChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 
     public class CompanyCellTemplate : ViewCell
@@ -73,6 +69,25 @@ namespace my_stocks.view
             }
 
             return ImageSource.FromResource(source);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class BooleanToColorConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            Boolean selected = (Boolean)value;
+
+            Console.WriteLine(selected);
+            if (selected)
+                return Color.LightBlue;
+                
+            return Color.LightGray;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

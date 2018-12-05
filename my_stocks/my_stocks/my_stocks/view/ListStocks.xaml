@@ -5,11 +5,23 @@
              Title="">
   <ContentPage.Content>
 
-        <ListView x:Name="companiesList" RowHeight="50" HasUnevenRows="True" 
-                IsPullToRefreshEnabled="True"
-                RefreshCommand="{Binding RefreshCommand}"
-                IsRefreshing="{Binding IsRefreshing}">
-        </ListView>
-      
-  </ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <ListView x:Name="companiesList" RowHeight="50" HasUnevenRows="True" 
+                        IsPullToRefreshEnabled="True"
+                        RefreshCommand="{Binding RefreshCommand}"
+                        IsRefreshing="{Binding IsRefreshing}">
+                </ListView>
+            </StackLayout>
+
+            <StackLayout x:Name="multiple" IsVisible="False" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                <Button x:Name="compareButton" ClassId="compareButton" Text="Compare"  TextColor="White" BackgroundColor="Green"/>
+                <Button x:Name="cancelButton" ClassId="cancelButton" Text="Cancel" TextColor="White" BackgroundColor="Orange"/>
+            </StackLayout>
+
+            <StackLayout x:Name="single" IsVisible="False" Orientation="Horizontal"  HorizontalOptions="CenterAndExpand">
+                <Button x:Name="viewStats" ClassId="viewStats" Text="Statistics" TextColor="White" BackgroundColor="Green"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

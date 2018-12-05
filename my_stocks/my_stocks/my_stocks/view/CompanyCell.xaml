@@ -3,27 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:my_stocks.view"
              x:Class="my_stocks.view.CompanyCell">
-    
+
     <ContentView.Resources>
-        <!-- Add this line below -->
         <local:ValueToColorConverter x:Key="ValueToColorConverter" />
         <local:ValueToImageConverter x:Key="ValueToImageConverter" />
+        <local:BooleanToColorConverter x:Key="BooleanToColorConverter" />
     </ContentView.Resources>
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.5*"/>
-            <ColumnDefinition Width="0.15*"/>
-            <ColumnDefinition Width="0.10*"/>
-            <ColumnDefinition Width="0.25*"/>
-        </Grid.ColumnDefinitions>
+    <StackLayout BackgroundColor="{Binding selected , Converter={StaticResource BooleanToColorConverter}}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.15*"/>
+                <ColumnDefinition Width="0.10*"/>
+                <ColumnDefinition Width="0.25*"/>
+            </Grid.ColumnDefinitions>
        
-        <Label Text="{Binding name}" FontAttributes="Bold" FontSize="18" Margin="10"/>
-        <StackLayout Grid.Column="1" Orientation="Vertical" VerticalOptions="Center">
-            <Label x:Name="percentChange" TextColor="{Binding netChange, Converter={StaticResource ValueToColorConverter}}" Text="{Binding percentChange, StringFormat='{}{0:F2}%'}" FontSize="15"/>
-            <Label x:Name="netChange" TextColor="{Binding netChange, Converter={StaticResource ValueToColorConverter}}" Text="{Binding netChange, StringFormat='{}{0:F2}'}" FontSize="15"/>
-        </StackLayout>
-        <Image x:Name="icon" Grid.Column="2" Source="{Binding netChange, Converter={StaticResource ValueToImageConverter}}" Aspect="AspectFit"  />
-        <Label Grid.Column="3" Text="{Binding lastPrice, StringFormat= '\{0\} USD'}" HorizontalTextAlignment="End" Margin="15" FontSize="17"/>
-    </Grid>
+            <Label Text="{Binding name}" FontAttributes="Bold" FontSize="18" Margin="10"/>
+            <StackLayout Grid.Column="1" Orientation="Vertical" VerticalOptions="Center">
+                <Label x:Name="percentChange" TextColor="{Binding netChange, Converter={StaticResource ValueToColorConverter}}" Text="{Binding percentChange, StringFormat='{}{0:F2}%'}" FontSize="15"/>
+                <Label x:Name="netChange" TextColor="{Binding netChange, Converter={StaticResource ValueToColorConverter}}" Text="{Binding netChange, StringFormat='{}{0:F2}'}" FontSize="15"/>
+            </StackLayout>
+            <Image x:Name="icon" Grid.Column="2" Source="{Binding netChange, Converter={StaticResource ValueToImageConverter}}" Aspect="AspectFit"  />
+            <Label Grid.Column="3" Text="{Binding lastPrice, StringFormat= '\{0\} USD'}" HorizontalTextAlignment="End" Margin="15" FontSize="17"/>
+        </Grid>
+    </StackLayout>
 </ContentView>

@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.ComponentModel;
 
 namespace my_stocks.model
 {
@@ -15,23 +15,23 @@ namespace my_stocks.model
 
         public Double percentChange { get; set; }
 
-        public Boolean Selected { get; set; }
-
-        public StockData[] History; 
+        private Boolean Selected;
+        public Boolean selected { get; set; }
+        public StockData[] History;
 
         public Company(String name, Double lastPrice, String symbol, Double netChange, Double percentChange)
         {
             this.name = name;
             this.lastPrice = lastPrice;
             this.symbol = symbol;
-            this.Selected = false;
+            this.selected = false;
             this.netChange = netChange;
             this.percentChange = percentChange;
         }
 
         public Company()
         {
-            this.Selected = false;
+            this.selected = false;
         }
     }
 }
