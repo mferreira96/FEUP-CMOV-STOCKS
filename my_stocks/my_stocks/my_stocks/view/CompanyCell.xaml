@@ -10,8 +10,8 @@
         <local:BooleanToColorConverter x:Key="BooleanToColorConverter" />
     </ContentView.Resources>
 
-    <StackLayout BackgroundColor="{Binding selected , Converter={StaticResource BooleanToColorConverter}}">
-        <Grid>
+    <StackLayout BackgroundColor="{Binding Selected , Converter={StaticResource BooleanToColorConverter}}">
+        <Grid BackgroundColor="{Binding Selected , Converter={StaticResource BooleanToColorConverter}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.5*"/>
                 <ColumnDefinition Width="0.15*"/>

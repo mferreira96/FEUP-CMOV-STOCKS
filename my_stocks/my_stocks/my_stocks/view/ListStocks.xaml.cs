@@ -12,13 +12,14 @@ namespace my_stocks.view
 	public partial class ListStocks : ContentPage
 	{
         private List<Company> selectedCompanies;
+        private ListCompanies listCompanies;
 
         public ListStocks()
 		{
 
             InitializeComponent();
             Title = "Companies";
-            ListCompanies listCompanies = new ListCompanies();
+            listCompanies = new ListCompanies();
 
             companiesList.ItemsSource = listCompanies.Companies;
             companiesList.ItemTemplate = new DataTemplate(typeof(CompanyCellTemplate));
@@ -43,10 +44,14 @@ namespace my_stocks.view
 
             if (btn.ClassId.Equals(compareButton.ClassId))
             {
-                //navigate
+                Navigation.PushAsync(new ChartPage());
             }
             else if (btn.ClassId.Equals(cancelButton.ClassId))
             {
+                foreach(Company c in selectedCompanies)
+                {
+                    c.Selected = false;
+                }
                 selectedCompanies.Clear();
                 ButtonsVisibility(0);
             }
@@ -63,18 +68,20 @@ namespace my_stocks.view
 
             Company selectedItem = e.Item as Company;
             
-            if (selectedItem.selected)
+            if (selectedItem.Selected)
             {
-                selectedItem.selected = false;
+                selectedItem.Selected = false;
                 selectedCompanies.Remove(selectedItem);
             }
             else
             {
-                selectedItem.selected = true;
+                selectedItem.Selected = true;
                 selectedCompanies.Add(selectedItem);
             }
 
+
             int totalSelected = selectedCompanies.Count;
+
 
             ButtonsVisibility(totalSelected);
         }

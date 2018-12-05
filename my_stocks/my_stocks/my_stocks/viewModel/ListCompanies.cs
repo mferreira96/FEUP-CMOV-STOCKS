@@ -1,9 +1,20 @@
 ﻿using my_stocks.model;
+using my_stocks.observer;
 using my_stocks.services;
+using System;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace my_stocks.viewModel
 {
+    public class SelectableObservableCollection<T> : ObservableCollection<T>
+    {
+        protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
+        {
+            base.OnCollectionChanged(e);
+        }
+
+    }
     public class ListCompanies
     {
         private ObservableCollection<Company> companies;
@@ -26,7 +37,30 @@ namespace my_stocks.viewModel
         public async void BuildList()
         {
             WebInterface webInterface = WebInterface.getInstance();
-            CompaniesList companiesRetrieved = await webInterface.Get<CompaniesList>("/companies");
+            CompaniesList companiesRetrieved = null;
+            try
+            {
+                 companiesRetrieved = await webInterface.Get<CompaniesList>("/companies");
+
+            } catch(Exception e)
+            {
+
+                companiesRetrieved = new CompaniesList
+                {
+                    companies = new Company[]{
+                    new Company("TEST", 20, "123", 0.3, 22.22),
+                    new Company("TEST", 20, "123", 0.3, 22.22),
+                    new Company("TEST", 20, "123", 0.3, 22.22),
+                    new Company("TEST", 20, "123", 0.3, 22.22),
+                    new Company("TEST", 20, "123", 0.3, 22.22),
+                    new Company("TEST", 20, "123", 0.3, 22.22),
+                    new Company("TEST", 20, "123", 0.3, 22.22),
+                    new Company("TEST", 20, "123", 0.3, 22.22),
+                    new Company("TEST", 20, "123", 0.3, 22.22),
+                    new Company("TEST", 20, "123", 0.3, 22.22)
+                    }
+                };
+            }
       
             if (companiesRetrieved != null)
             {

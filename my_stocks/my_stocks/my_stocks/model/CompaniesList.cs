@@ -8,6 +8,8 @@ namespace my_stocks.model
     {
         public Company[] companies { get; set; }
 
+        public CompaniesList() { }
+
         public CompaniesList(Company[] companies)
         {
             this.companies = companies;

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 namespace my_stocks.model
 {
-    public class Company
+    public class Company : INotifyPropertyChanged
     {
         public String name { get; set;}
      
@@ -15,9 +17,23 @@ namespace my_stocks.model
 
         public Double percentChange { get; set; }
 
-        private Boolean Selected;
-        public Boolean selected { get; set; }
+        private bool selected = false;
+        public Boolean Selected {
+            get { return selected; }
+            set
+            {
+                if (selected != value)
+                    selected = value;
+                OnPropertyChanged();
+            }
+        }
         public StockData[] History;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         public Company(String name, Double lastPrice, String symbol, Double netChange, Double percentChange)
         {

@@ -12,7 +12,7 @@ namespace my_stocks
         {
             InitializeComponent();
 
-            MainPage = new ListStocks();
+            MainPage = new NavigationPage(new ListStocks());
             //MainPage = new Chart();
             //MainPage = new MainPage();
         }

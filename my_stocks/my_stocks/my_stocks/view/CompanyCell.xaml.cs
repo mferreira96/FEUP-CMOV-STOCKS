@@ -1,6 +1,7 @@
 ﻿using my_stocks.model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -83,7 +84,7 @@ namespace my_stocks.view
         {
             Boolean selected = (Boolean)value;
 
-            Console.WriteLine(selected);
+            Debug.WriteLine("Selected" + selected);
             if (selected)
                 return Color.LightBlue;
                 
@@ -92,6 +93,7 @@ namespace my_stocks.view
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            Debug.WriteLine("What?");
             throw new NotImplementedException();
         }
     }
