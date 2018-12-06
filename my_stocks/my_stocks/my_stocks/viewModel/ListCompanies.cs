@@ -1,5 +1,4 @@
 ﻿using my_stocks.model;
-using my_stocks.observer;
 using my_stocks.services;
 using System;
 using System.Collections.ObjectModel;
@@ -36,7 +35,7 @@ namespace my_stocks.viewModel
 
         public async void BuildList()
         {
-            WebInterface webInterface = WebInterface.getInstance();
+            WebInterface webInterface = WebInterface.GetInstance();
             CompaniesList companiesRetrieved = null;
             try
             {
@@ -52,6 +51,8 @@ namespace my_stocks.viewModel
                     new Company("TEST", 20, "123", 0.3, 22.22)
                     }
                 };
+
+                Console.WriteLine(e.Message);
             }
       
             if (companiesRetrieved != null)

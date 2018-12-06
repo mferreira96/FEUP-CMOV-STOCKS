@@ -1,5 +1,4 @@
-﻿using my_stocks.data;
-using my_stocks.model;
+﻿using my_stocks.model;
 using my_stocks.viewModel;
 using System;
 using System.Collections.Generic;
@@ -8,7 +7,7 @@ using Xamarin.Forms.Xaml;
 
 namespace my_stocks.view
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ListStocks : ContentPage
 	{
 

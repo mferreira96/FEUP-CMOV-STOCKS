@@ -15,7 +15,7 @@ namespace my_stocks.services
         public async static Task<Company[]> GetStocks(string[] names, bool weekly= true)
         {
             string companies = String.Join(",", names);
-            CompanyList list = await WebInterface.getInstance().Get<CompanyList>(String.Format("/stocks/{0}/{1}",weekly? "week" : "month", companies));
+            CompanyList list = await WebInterface.GetInstance().Get<CompanyList>(String.Format("/stocks/{0}/{1}",weekly? "week" : "month", companies));
             return list.companies;
         }
     }

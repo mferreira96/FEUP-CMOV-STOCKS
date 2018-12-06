@@ -13,6 +13,7 @@
                VerticalOptions="Center" TextColor="CornflowerBlue"/>
 
             <Image x:Name="icon" Aspect="AspectFit" Scale="1.0" HeightRequest="200" VerticalOptions="Center"  />
+            <Entry x:Name="url" HorizontalOptions="CenterAndExpand"/>
             <Button x:Name="start" Text="Start" FontSize="30" VerticalOptions="Center" BackgroundColor="White" TextColor="CornflowerBlue" Padding="20"  />
         </StackLayout>
     </StackLayout>

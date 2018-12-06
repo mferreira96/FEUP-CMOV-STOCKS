@@ -10,7 +10,7 @@ namespace my_stocks.services
         private HttpClient _client;
         private static WebInterface instance = null;
 
-        public static WebInterface getInstance(){
+        public static WebInterface GetInstance(){
             if(instance == null){
                 instance =  new WebInterface();
             } 
@@ -21,7 +21,17 @@ namespace my_stocks.services
         private WebInterface()
         {
             _client = new HttpClient();
-            _client.BaseAddress = new Uri("http://192.168.1.117:8080");
+            String url;
+            try
+            {
+                url = App.Current.Properties["url"].ToString();
+            }catch(Exception e)
+            {
+                url = "http://localhost:8080";
+                Console.WriteLine(e.Message);
+            }
+            
+            _client.BaseAddress = new Uri(url);
         } 
 
         public async Task<T> Get<T>(string path)
