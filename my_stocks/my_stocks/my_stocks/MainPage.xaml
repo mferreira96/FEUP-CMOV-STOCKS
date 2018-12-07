@@ -4,9 +4,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converters="clr-namespace:my_stocks.converters"
              xmlns:chart="clr-namespace:my_stocks.view"
+             BackgroundColor="White"
              x:Class="my_stocks.MainPage">
-    <StackLayout Spacing="0" Orientation="Vertical">
-        <!-- Place new controls here -->
+    <StackLayout Spacing="0" Orientation="Vertical" BackgroundColor="White">
         <StackLayout VerticalOptions="CenterAndExpand">
             <Label Text="My Stocks" 
                HorizontalOptions="Center" FontSize="40"

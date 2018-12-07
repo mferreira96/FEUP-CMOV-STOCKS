@@ -38,6 +38,11 @@ namespace my_stocks.view
             Title = "Companies";
             listCompanies = new ListCompanies();
 
+            listCompanies.OnFinished = () =>
+            {
+                Loading = false;
+            };
+
             companiesList.ItemsSource = listCompanies.Companies;
             companiesList.ItemTemplate = new DataTemplate(typeof(CompanyCellTemplate));
             companiesList.RefreshCommand = new Command(() =>
@@ -45,7 +50,6 @@ namespace my_stocks.view
                 listCompanies.BuildList();
                 companiesList.IsRefreshing = false;
             });
-            Loading = false;
             companiesList.SelectionMode = ListViewSelectionMode.Single;
             companiesList.ItemTapped += OnTapEvent;
 

@@ -18,6 +18,8 @@ namespace my_stocks.viewModel
     {
         private ObservableCollection<Company> companies;
 
+        public Action OnFinished;
+
         public ObservableCollection<Company> Companies
         {
             get { return companies; }
@@ -64,6 +66,7 @@ namespace my_stocks.viewModel
                     this.companies.Add(company);
                 }
             }
+            OnFinished?.Invoke();
         }
     }
 }
