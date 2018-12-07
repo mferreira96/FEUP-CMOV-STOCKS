@@ -57,11 +57,12 @@ namespace my_stocks.converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             Boolean selected = (Boolean)value;
+            String[] colors = parameter.ToString().Split(',');
 
             if (selected)
-                return Color.LightBlue;
-                
-            return Color.LightGray;
+                return Color.FromHex(colors[0]); //Color.FromHex("#81D4FA");
+
+            return Color.FromHex(colors[1]);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -78,11 +79,10 @@ namespace my_stocks.converters
 
             string[] colors =
             {
-                "#0D47A1",
-                "#B71C1C",
-                "#1B5E20",
-                "#BF360C",
-                "#880E4F"
+                "#039BE5",
+                "#E53935",
+                "#7CB342",
+                "#FFB300"
             };
 
             if(selected < colors.Length)

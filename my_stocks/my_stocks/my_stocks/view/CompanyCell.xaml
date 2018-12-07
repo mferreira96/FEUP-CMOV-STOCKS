@@ -12,8 +12,8 @@
         <converters:IntegerToColorConverter x:Key="IntegerToColorConverter" />
     </ContentView.Resources>
 
-    <StackLayout BackgroundColor="{Binding Selected , Converter={StaticResource BooleanToColorConverter}}">
-        <Grid BackgroundColor="{Binding Selected , Converter={StaticResource BooleanToColorConverter}}">
+    <StackLayout BackgroundColor="{Binding Selected , Converter={StaticResource BooleanToColorConverter}, ConverterParameter='#29B6F6,#FFFFFF'}">
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.5*"/>
                 <ColumnDefinition Width="0.15*"/>
@@ -21,13 +21,15 @@
                 <ColumnDefinition Width="0.25*"/>
             </Grid.ColumnDefinitions>
        
-            <Label Text="{Binding name}" FontAttributes="Bold" FontSize="18" Margin="10"/>
+            <Label Text="{Binding name}" FontAttributes="Bold" FontSize="18" Margin="10" 
+                   TextColor="{Binding Selected, Converter={StaticResource BooleanToColorConverter}, ConverterParameter='#fff,#263238'}" />
             <StackLayout Grid.Column="1" Orientation="Vertical" VerticalOptions="Center">
                 <Label x:Name="percentChange" TextColor="{Binding netChange, Converter={StaticResource ValueToColorConverter}}" Text="{Binding percentChange, StringFormat='{}{0:F2}%'}" FontSize="15"/>
                 <Label x:Name="netChange" TextColor="{Binding netChange, Converter={StaticResource ValueToColorConverter}}" Text="{Binding netChange, StringFormat='{}{0:F2}'}" FontSize="15"/>
             </StackLayout>
             <Image x:Name="icon" Grid.Column="2" Source="{Binding netChange, Converter={StaticResource ValueToImageConverter}}" Aspect="AspectFit" Scale="0.2"  />
-            <Label Grid.Column="3" Text="{Binding lastPrice, StringFormat= '\{0\} USD'}" HorizontalTextAlignment="End" Margin="15" FontSize="17"/>
+            <Label Grid.Column="3" Text="{Binding lastPrice, StringFormat= '\{0\} USD'}" HorizontalTextAlignment="End" Margin="15" FontSize="17"
+                   TextColor="{Binding Selected, Converter={StaticResource BooleanToColorConverter}, ConverterParameter='#fff,#263238'}" />
         </Grid>
     </StackLayout>
 </ContentView>

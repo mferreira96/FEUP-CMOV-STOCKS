@@ -15,6 +15,11 @@ namespace my_stocks
             icon.Source =  ImageSource.FromResource(source);
             NavigationPage.SetHasNavigationBar(this, false);
 
+            config.Clicked += (a, b) =>
+            {
+                url.IsVisible = !url.IsVisible;
+            };
+
             try
             {
                 String previousUrl = Application.Current.Properties["url"].ToString();

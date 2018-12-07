@@ -18,9 +18,9 @@
             </StackLayout>
 
             <StackLayout x:Name="multiple" IsVisible="False" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
-                <Button x:Name="sortByButton" ClassId="viewStats" Text="By Week" TextColor="White" BackgroundColor="Blue"/>
-                <Button x:Name="compareButton" ClassId="compareButton" Text="Compare"  TextColor="White" BackgroundColor="Green"/>
-                <Button x:Name="cancelButton" ClassId="cancelButton" Text="Cancel" TextColor="White" BackgroundColor="Orange"/>
+                <Button x:Name="sortByButton" ClassId="viewStats" Text="By Week" TextColor="White" BackgroundColor="#039BE5"/>
+                <Button x:Name="compareButton" ClassId="compareButton" Text="Compare"  TextColor="White" BackgroundColor="#43A047"/>
+                <Button x:Name="cancelButton" ClassId="cancelButton" Text="Cancel" TextColor="White" BackgroundColor="#FB8C00"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

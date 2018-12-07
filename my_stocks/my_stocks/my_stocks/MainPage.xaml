@@ -10,11 +10,14 @@
         <StackLayout VerticalOptions="CenterAndExpand">
             <Label Text="My Stocks" 
                HorizontalOptions="Center" FontSize="40"
-               VerticalOptions="Center" TextColor="CornflowerBlue"/>
+               VerticalOptions="Center" TextColor="#039BE5"/>
 
             <Image x:Name="icon" Aspect="AspectFit" Scale="1.0" HeightRequest="200" VerticalOptions="Center"  />
-            <Entry x:Name="url" HorizontalOptions="CenterAndExpand"/>
-            <Button x:Name="start" Text="Start" FontSize="30" VerticalOptions="Center" BackgroundColor="White" TextColor="CornflowerBlue" Padding="20"  />
+            <Button x:Name="start" Text="Start" FontSize="30" VerticalOptions="Center" BackgroundColor="White" TextColor="#039BE5" Padding="20"  />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button x:Name="config" Text="Config" FontSize="15" VerticalOptions="Center" BackgroundColor="White" TextColor="#FB8C00" Padding="2"  />
+                <Entry x:Name="url" IsVisible="False" WidthRequest="200"/>
+            </StackLayout>
         </StackLayout>
     </StackLayout>
 

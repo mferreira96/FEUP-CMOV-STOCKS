@@ -50,11 +50,10 @@ namespace my_stocks.view
 		{
 			InitializeComponent ();
             colors = new SKColor[]{
-                FromHex("#0D47A1"),
-                FromHex("#B71C1C"),
-                FromHex("#1B5E20"),
-                FromHex("#BF360C"),
-                FromHex("#880E4F")
+                FromHex("#039BE5"),
+                FromHex("#E53935"),
+                FromHex("#7CB342"),
+                FromHex("#FFB300")
             };
 
             canvasView.EnableTouchEvents = true;
