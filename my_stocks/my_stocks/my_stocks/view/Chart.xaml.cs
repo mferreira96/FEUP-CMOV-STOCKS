@@ -212,7 +212,7 @@ namespace my_stocks.view
             float startY = valuesRect.Bottom;
             float endY = valuesRect.Top;
 
-            SKPaint paint = new SKPaint { Color = SKColors.Gray, Style = SKPaintStyle.Fill, TextSize=textSize, TextAlign = SKTextAlign.Left};
+            SKPaint paint = new SKPaint { Color = SKColors.Gray, Style = SKPaintStyle.Fill, TextSize=textSize, TextAlign = SKTextAlign.Left, IsAntialias = true};
 
             Random r = new Random();
 
@@ -263,7 +263,7 @@ namespace my_stocks.view
         private void DrawHorizontalLabel(SKCanvas canvas, SKRect valuesRect, DateTime minValue, DateTime maxValue, int n, Func<DateTime, String> format)
         {
             float min = Math.Min(valuesRect.Width, valuesRect.Height)*0.45f;
-            SKPaint paint = new SKPaint { Color = SKColors.Gray, Style = SKPaintStyle.Fill, TextSize=min, TextAlign = SKTextAlign.Left};
+            SKPaint paint = new SKPaint { Color = SKColors.Gray, Style = SKPaintStyle.Fill, TextSize=min, TextAlign = SKTextAlign.Left, IsAntialias=true};
 
             long startTicks = minValue.Ticks;
             long endTicks = maxValue.Ticks;
