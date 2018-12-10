@@ -113,14 +113,12 @@ namespace my_stocks.view
         {
             if (totalSelected >= 2)
             {
-                Console.WriteLine("more than one selected");
                 multiple.IsVisible = true;
                 compareButton.Text = "Compare";
                 cancelButton.IsVisible = true;
             }
             else if (totalSelected == 1)
             {
-                Console.WriteLine("one selected");
                 multiple.IsVisible = true;
                 compareButton.Text = "Analyse";
                 cancelButton.IsVisible = false;
@@ -129,7 +127,6 @@ namespace my_stocks.view
             {
                 multiple.IsVisible = false;
                 cancelButton.IsVisible = false;
-                Console.WriteLine("none");
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using my_stocks.view;
+using Plugin.Connectivity;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,7 +14,6 @@ namespace my_stocks
             InitializeComponent();
 
             MainPage = new NavigationPage(new MainPage());
-
         }
 
         public static Page GetMainPage()

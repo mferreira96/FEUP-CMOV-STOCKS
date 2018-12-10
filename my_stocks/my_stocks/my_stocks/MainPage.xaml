@@ -7,8 +7,8 @@
              BackgroundColor="White"
              x:Class="my_stocks.MainPage">
     <StackLayout Spacing="0" Orientation="Vertical" BackgroundColor="White">
-        <StackLayout VerticalOptions="CenterAndExpand">
-            <Label Text="My Stocks" 
+        <StackLayout VerticalOptions="CenterAndExpand" Orientation="Vertical">
+            <Label x:Name="title"  Text="My Stocks" 
                HorizontalOptions="Center" FontSize="40"
                VerticalOptions="Center" TextColor="#039BE5"/>
 
@@ -18,6 +18,7 @@
                 <Button x:Name="config" Text="Config" FontSize="15" VerticalOptions="Center" BackgroundColor="White" TextColor="#FB8C00" Padding="2"  />
                 <Entry x:Name="url" IsVisible="False" WidthRequest="200"/>
             </StackLayout>
+            <Label x:Name="errorConnection" HorizontalOptions="Center" HeightRequest="50" VerticalOptions="Center" FontSize="15" TextColor="Red" />
         </StackLayout>
     </StackLayout>
 
