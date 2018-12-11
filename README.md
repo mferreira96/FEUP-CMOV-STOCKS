@@ -1,3 +1,7 @@
 # FEUP-CMOV-STOCKS
 
-## TO DO
+## Authors
+
+[João Ferreira](https://github.com/joaocsf)
+
+[Marcelo Ferreira](https://github.com/mferreira96) 
