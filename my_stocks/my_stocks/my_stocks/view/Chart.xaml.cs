@@ -31,7 +31,10 @@ namespace my_stocks.view
 
         private int STROKE_SIZE = 4;
 
+        public int numberOfCharts = 10;
+
         private Company[] companies;
+        private Company[] companiesCopy;
 
         public Company[] Companies
         {
@@ -42,8 +45,32 @@ namespace my_stocks.view
             set
             {
                 companies = value;
+                CopyCompanies(companies);
                 canvasView.InvalidateSurface();
             }
+        }
+
+        private void CopyCompanies(Company[] companies)
+        {
+            companiesCopy = new Company[companies.Length];
+           
+            for(int i = 0; i < companies.Length; i++)
+            {
+                companiesCopy[i] = new Company(companies[i]);
+            }
+        }
+
+        public void UpdateCompaniesRange(int newValue)
+        {
+            if (companies == null) return;
+            for(int i = 0; i < companies.Length; i++)
+            {
+                int min = Math.Min(companiesCopy[i].History.Length, newValue);
+                companies[i].History = new StockData[min];
+                if (min == 0) continue;
+                Array.Copy(companiesCopy[i].History, companies[i].History, min);
+            }
+            canvasView.InvalidateSurface();
         }
 
         public Chart ()
@@ -262,7 +289,7 @@ namespace my_stocks.view
 
         private void DrawHorizontalLabel(SKCanvas canvas, SKRect valuesRect, DateTime minValue, DateTime maxValue, int n, Func<DateTime, String> format)
         {
-            float min = Math.Min(valuesRect.Width, valuesRect.Height)*0.45f;
+            float min = Math.Min(valuesRect.Width, valuesRect.Height)*0.43f;
             SKPaint paint = new SKPaint { Color = SKColors.Gray, Style = SKPaintStyle.Fill, TextSize=min, TextAlign = SKTextAlign.Left, IsAntialias=true};
 
             long startTicks = minValue.Ticks;

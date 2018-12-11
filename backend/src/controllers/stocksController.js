@@ -9,7 +9,7 @@ module.exports = {
 
       var companyList = []
 
-      var size = 10
+      var size = 30
 
       for (var company of companies) {
         var response = await alphaVantageServices.retrieveCompanyData(company, weekly === 'week')
@@ -23,7 +23,7 @@ module.exports = {
         var count = size
         var cached = null
         for (var date in series) {
-          if (count-- < 0) break
+          if (--count < 0) break
           if (cached === null) {
             var seriesKeys = Object.keys(series[date])
             cached = seriesKeys[3]

@@ -38,7 +38,7 @@
     <Compile Update="view\CompanyCellChart.xaml.cs">
       <DependentUpon>CompanyCellChart.xaml</DependentUpon>
     </Compile>
-    <Compile Update="view\ListStocks.xaml.cs">
+    <Compile Update="pages\ListStocks.xaml.cs">
       <DependentUpon>ListStocks.xaml</DependentUpon>
     </Compile>
     <Compile Update="view\Chart.xaml.cs">
@@ -47,13 +47,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="ChartPage.xaml">
+    <EmbeddedResource Update="pages\ChartPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="view\CompanyCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="view\ListStocks.xaml">
+    <EmbeddedResource Update="pages\ListStocks.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="view\Chart.xaml">

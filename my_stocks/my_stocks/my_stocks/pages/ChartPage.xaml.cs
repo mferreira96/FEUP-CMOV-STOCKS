@@ -17,6 +17,23 @@ namespace my_stocks
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ChartPage : ContentPage
 	{
+        private int numberofQuotes = 7;
+        public int NumberOfQuotes
+        {
+            set
+            {
+                if (numberofQuotes != (int)value)
+                {
+                    numberofQuotes = (int)value;
+                    OnPropertyChanged();
+                    chartView.UpdateCompaniesRange((int)numberofQuotes);
+                }
+            }
+            get
+            {
+                return (int)numberofQuotes;
+            }
+        }
         private bool loading = true;
         public bool Loading
         {
@@ -66,12 +83,12 @@ namespace my_stocks
                 c.Index = i++;
                 cmps.Add(c);
             }
+            chartView.UpdateCompaniesRange((int)numberofQuotes);
             Loading = false;
 
             companiesList.SelectionMode = ListViewSelectionMode.None;
             companiesList.ItemsSource = cmps;
             companiesList.ItemTemplate = new DataTemplate(typeof(CompanyCellChartTemplate));
-            companiesList.SelectionMode = ListViewSelectionMode.Single;
         }
 
         async Task<Company[]> GetCompanies(List<Company> companiesList, bool byWeek)

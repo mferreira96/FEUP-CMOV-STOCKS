@@ -51,6 +51,17 @@ namespace my_stocks.model
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        public Company(Company company)
+        {
+            this.name = company.name;
+            this.lastPrice = company.lastPrice;
+            this.symbol = company.symbol;
+            this.selected = company.selected;
+            this.netChange = company.netChange;
+            this.percentChange = company.percentChange;
+            this.History = company.History;
+        }
+
         public Company(String name, Double lastPrice, String symbol, Double netChange, Double percentChange)
         {
             this.name = name;
