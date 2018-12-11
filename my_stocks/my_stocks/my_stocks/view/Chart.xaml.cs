@@ -222,10 +222,10 @@ namespace my_stocks.view
         private string FormatValue(float value) {
             
             if(value > 1000000)
-                return (value / 1000000D).ToString("0M");
+                return (value / 1000000D).ToString("0.0M");
             if (value > 1000)
             {
-                return (value / 1000D).ToString("0K");
+                return (value / 1000D).ToString("0.0K");
             }
             else
                 return value.ToString("0");
