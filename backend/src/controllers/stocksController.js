@@ -12,7 +12,7 @@ module.exports = {
       var size = 30
 
       for (var company of companies) {
-        var response = await alphaVantageServices.retrieveCompanyData(company, weekly === 'week')
+        var response = await alphaVantageServices.retrieveCompanyData(company, weekly)
         var keys = Object.keys(response.data)
         var series = response.data[keys[1]]
         var companyElement = {

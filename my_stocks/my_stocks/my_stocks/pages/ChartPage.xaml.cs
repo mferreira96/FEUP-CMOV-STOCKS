@@ -49,23 +49,23 @@ namespace my_stocks
             }
         }
 
-		public ChartPage (List<Company> companies, bool byWeek)
+		public ChartPage (List<Company> companies, string byType)
 		{
 
 			InitializeComponent ();
             NavigationPage.SetHasNavigationBar(this, false);
             loading = true;
-            FetchData(companies, byWeek);
+            FetchData(companies, byType);
             Title = "Stock Evolution";
             
 		}
 
-        async void FetchData(List<Company> companies, bool byWeek)
+        async void FetchData(List<Company> companies, string byType)
         {
             Company[] comps;
             try
             {
-                comps = await GetCompanies(companies, byWeek);
+                comps = await GetCompanies(companies, byType);
             }catch (Exception e)
             {
                 comps = new Company[0];
@@ -91,14 +91,14 @@ namespace my_stocks
             companiesList.ItemTemplate = new DataTemplate(typeof(CompanyCellChartTemplate));
         }
 
-        async Task<Company[]> GetCompanies(List<Company> companiesList, bool byWeek)
+        async Task<Company[]> GetCompanies(List<Company> companiesList, string byType)
         {
             List<string> companies = new List<string>();
             foreach(Company c in companiesList)
             {
                 companies.Add(c.symbol);
             }
-            return await StockServices.GetStocks(companies.ToArray(), byWeek);
+            return await StockServices.GetStocks(companies.ToArray(), byType);
         }
 	}
 }

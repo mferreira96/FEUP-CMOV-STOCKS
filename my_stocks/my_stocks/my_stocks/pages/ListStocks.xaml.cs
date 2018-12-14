@@ -28,7 +28,8 @@ namespace my_stocks.view
         
         private List<Company> selectedCompanies;
         private ListCompanies listCompanies;
-        private bool byWeek = true;
+        private int sortBy = 0;
+        private string[] sortName = { "Day", "Week", "Month" };
 
         public ListStocks()
 		{
@@ -56,10 +57,11 @@ namespace my_stocks.view
             compareButton.Clicked += OnButtonClick;
             cancelButton.Clicked += OnButtonClick;
 
+            sortByButton.Text = "By " + sortName[sortBy];
             sortByButton.Clicked += (a, b) =>
             {
-                byWeek = !byWeek;
-                sortByButton.Text = byWeek ? "By Week" : "By Month";
+                sortBy = (sortBy + 1) % sortName.Length;
+                sortByButton.Text = "By " + sortName[sortBy];
             };
 
             selectedCompanies = new List<Company>();
@@ -71,7 +73,7 @@ namespace my_stocks.view
 
             if (btn.ClassId.Equals(compareButton.ClassId))
             {
-                await Navigation.PushAsync(new ChartPage(selectedCompanies, byWeek));
+                await Navigation.PushAsync(new ChartPage(selectedCompanies, sortName[sortBy].ToLower()));
             }
             else if (btn.ClassId.Equals(cancelButton.ClassId))
             {
